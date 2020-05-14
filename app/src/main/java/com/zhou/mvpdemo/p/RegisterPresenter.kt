@@ -28,6 +28,7 @@ class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presente
 
             override fun onFailure(e: Exception?) {
                 v.hideLoading()
+                v.onError(e.toString())
             }
 
         })

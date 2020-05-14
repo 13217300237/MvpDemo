@@ -2,33 +2,23 @@ package com.zhou.mvpdemo.m
 
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.baselibrary.network.Https
-import com.zhou.mvpdemo.contract.RegisterContract
-import com.zhou.mvpdemo.m.bean.register.RegisterBean
+import com.zhou.mvpdemo.contract.LoginContract
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
-class RegisterModel : RegisterContract.Model {
+class LoginModel : LoginContract.Model {
 
-    /**
-     * wanandroid 注册请求
-     */
-    override fun doRegister(
-        username: String,
-        pwd: String,
-        rPwd: String,
-        httpCallback: HttpCallback<RegisterBean>
-    ) {
-        val url = "https://www.wanandroid.com/user/register"
+    override fun doLogin(username: String, password: String, httpCallback: HttpCallback<String>) {
+        val url = "https://www.wanandroid.com/user/login"
         Https(url)
             .addParam("username", username)
-            .addParam("password", pwd)
-            .addParam("repassword", rPwd)
-            .post(object : Https.ResponseCallback<RegisterBean?> {
+            .addParam("password", password)
+            .post(object : Https.ResponseCallback<String?> {
                 override fun onSuccess(
                     request: Request?,
                     response: Response?,
-                    result: RegisterBean?,
+                    result: String?,
                     code: Int
                 ) {
                     httpCallback.onSuccess(result)

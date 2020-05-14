@@ -15,7 +15,7 @@ class RegisterContract {
         fun doRegister(
             username: String,
             pwd: String,
-            rpwd: String,
+            rPwd: String,
             httpCallback: HttpCallback<RegisterBean>
         )
     }
@@ -23,6 +23,8 @@ class RegisterContract {
     //V
     interface View : BaseView {
         fun handlerRegisterResult(data: RegisterBean?)
+
+        fun checkParams(): Boolean
     }
 
     //P

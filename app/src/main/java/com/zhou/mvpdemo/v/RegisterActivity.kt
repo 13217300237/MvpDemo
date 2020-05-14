@@ -18,10 +18,12 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     override fun init() {
 
         btnRegister.setOnClickListener {
-            val username = tvUsername.text.trim().toString()
-            val password = tvPassword.text.trim().toString()
-            val repassword = tvRepassword.text.trim().toString()
-            castPresenter().doRegister(username = username, pwd = password, rpwd = repassword)
+            if (checkParams()) {
+                val username = tvUsername.text.trim().toString()
+                val password = tvPassword.text.trim().toString()
+                val repassword = tvRepassword.text.trim().toString()
+                castPresenter().doRegister(username = username, pwd = password, rpwd = repassword)
+            }
         }
 
     }
@@ -40,6 +42,13 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     override fun handlerRegisterResult(data: RegisterBean?) {
         dataView.text = data.toString()
         Log.d("handlerRegisterResult", "$data")
+    }
+
+    /**
+     * 校验参数
+     */
+    override fun checkParams(): Boolean {
+        return tvUsername.text.isNotEmpty() && tvPassword.text.isNotEmpty() && tvRepassword.text.isNotEmpty()
     }
 
     override fun showLoading() {

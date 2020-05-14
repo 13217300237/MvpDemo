@@ -50,8 +50,13 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
             }
         }
 
-        btnToSetting.setOnClickListener {
+        btnToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnToLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -73,7 +78,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
     }
 
     override fun onError(msg: String) {
-        dataView.text = "获取内容失败!"
+        dataView.text = msg
     }
 
 }
