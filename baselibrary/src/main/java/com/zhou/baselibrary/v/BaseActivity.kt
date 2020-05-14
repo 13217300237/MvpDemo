@@ -1,8 +1,8 @@
-package com.zhou.mvpstandarddemo.v.base
+package com.zhou.baselibrary.v
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.zhou.mvpstandarddemo.p.base.BasePresenter
+import com.zhou.baselibrary.p.BasePresenter
 
 abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
     /**

@@ -1,5 +1,8 @@
-package com.zhou.mvpstandarddemo.v.base
+package com.zhou.baselibrary.v
 
+/**
+ * 规定所有V层 对象共有的行为
+ */
 interface BaseView {
 
     /**

@@ -1,14 +1,14 @@
-package com.zhou.mvpstandarddemo.p.base
+package com.zhou.baselibrary.p
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.zhou.mvpstandarddemo.v.base.BaseView
+import com.zhou.baselibrary.v.BaseView
 
 /**
  * P 标准接口, 定义所有P的标准动作
  *
- * 如果不使用lifecycle，这些释放动作就要放到所有Activity/Fragment的中，或者它们的基类中去做，现在统一在P层，就处理完了。
+ * 如果不使用 lifecycle，这些释放动作就要放到所有Activity/Fragment的中，或者它们的基类中去做，现在统一在P层处理
  */
 interface BasePresenter<V : BaseView> : LifecycleObserver {
 

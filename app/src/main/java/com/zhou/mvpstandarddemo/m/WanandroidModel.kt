@@ -1,8 +1,8 @@
 package com.zhou.mvpstandarddemo.m
 
-import com.zhou.mvpstandarddemo.comm.network.HttpCallback
-import com.zhou.mvpstandarddemo.comm.network.Https
-import com.zhou.mvpstandarddemo.m.base.BaseModel
+import com.zhou.baselibrary.network.HttpCallback
+import com.zhou.baselibrary.network.Https
+import com.zhou.baselibrary.m.BaseModel
 import com.zhou.mvpstandarddemo.m.bean.articles.ArticleBean
 import com.zhou.mvpstandarddemo.m.bean.banner.BannerBean
 import okhttp3.Request
@@ -21,8 +21,7 @@ class WanandroidModel : BaseModel {
      */
     fun getHomePageNews(httpCallback: HttpCallback<ArticleBean>) {
         val url = "https://www.wanandroid.com/article/list/0/json"
-        Https(url).get(object :
-            Https.ResponseCallback<ArticleBean> {
+        Https(url).get(object : Https.ResponseCallback<ArticleBean?> {
             override fun onSuccess(
                 request: Request?,
                 response: Response?,
@@ -36,6 +35,7 @@ class WanandroidModel : BaseModel {
                 httpCallback.onFailure(e)
             }
         })
+
     }
 
     /**
@@ -46,7 +46,7 @@ class WanandroidModel : BaseModel {
     fun getHomePageBanner(httpCallback: HttpCallback<BannerBean>) {
         val url = "https://www.wanandroid.com/banner/json"
         Https(url).get(object :
-            Https.ResponseCallback<BannerBean> {
+            Https.ResponseCallback<BannerBean?> {
             override fun onSuccess(
                 request: Request?,
                 response: Response?,

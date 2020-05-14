@@ -1,15 +1,17 @@
-package com.zhou.mvpstandarddemo
+package com.zhou.mvpstandarddemo.v
 
 import android.view.View
 import com.zhou.mvpstandarddemo.p.MainPagePresenter
-import com.zhou.mvpstandarddemo.v.base.BaseActivity
-import com.zhou.mvpstandarddemo.v.base.BaseView
+import com.zhou.baselibrary.v.BaseActivity
+import com.zhou.baselibrary.v.BaseView
+import com.zhou.mvpstandarddemo.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * View层一个标准实现
  */
-class MainActivity : BaseActivity<MainPagePresenter>(), BaseView {
+class MainActivity : BaseActivity<MainPagePresenter>(),
+    BaseView {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -55,6 +57,9 @@ class MainActivity : BaseActivity<MainPagePresenter>(), BaseView {
         dataView.text = "获取内容失败!"
     }
 
+    /**
+     * 我拿不到具体的类型，应该就不能对它进行处理
+     */
     override fun <T> onSuccess(t: T) {
         //  据说可以根据泛型对象来判断真实类型？
         dataView.text = t.toString()
