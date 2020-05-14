@@ -3,7 +3,7 @@ package com.zhou.mvpdemo.p
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.RegisterContract
 import com.zhou.mvpdemo.m.RegisterModel
-import com.zhou.mvpdemo.m.bean.register.RegisterBean
+import com.zhou.mvpdemo.m.bean.user.UserBean
 
 class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presenter {
 
@@ -20,8 +20,8 @@ class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presente
         val m = model ?: return
 
         v.showLoading()
-        m.doRegister(username, pwd, rpwd, object : HttpCallback<RegisterBean> {
-            override fun onSuccess(result: RegisterBean?) {
+        m.doRegister(username, pwd, rpwd, object : HttpCallback<UserBean> {
+            override fun onSuccess(result: UserBean?) {
                 v.hideLoading()
                 v.handlerRegisterResult(result)
             }

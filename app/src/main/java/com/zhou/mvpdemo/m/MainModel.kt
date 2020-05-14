@@ -11,7 +11,10 @@ import okhttp3.Response
 import java.io.IOException
 
 /**
- * 一个Model实例应该是可以单独自测，看数据是否正确返回了
+ * 一个Model实例应该是可以单独自测，看数据是否正确返回了,
+ * 但是我居然发现，post请求不能用okHttp3来单独测，回报一个参数异常的错误，我进去一看，才知道是okhttp内核在判定header参数，
+ * 其中一个参数是 phoneModel , 对应的值是Build.model,
+ * MMP，手机型号？！？！OKhttp3还真是针对移动端开发而生的啊，没有手机型号就不给你发post请求！》！》！
  */
 class MainModel : MainContract.Model {
 

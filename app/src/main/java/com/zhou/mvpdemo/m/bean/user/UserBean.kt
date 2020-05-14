@@ -1,37 +1,20 @@
-package com.zhou.mvpdemo.m.bean.register
+package com.zhou.mvpdemo.m.bean.user
+
 
 /**
- * Copyright 2020 bejson.com
+ * 支持登录和注册的数据转换
  */
-
-/**
- * Auto-generated: 2020-05-14 16:54:57
- *
- * @author bejson.com (i@bejson.com)
- * @website http://www.bejson.com/java2pojo/
- */
-class RegisterBean {
+class UserBean {
     var data: Data? = null
     var errorCode = 0
     var errorMsg: String? = null
-
 
     override fun toString(): String {
         return "[data:$data,errorCode:$errorCode,errorMsg:$errorMsg]"
     }
 }
 
-/**
- * Copyright 2020 bejson.com
- */
 
-
-/**
- * Auto-generated: 2020-05-14 16:54:57
- *
- * @author bejson.com (i@bejson.com)
- * @website http://www.bejson.com/java2pojo/
- */
 class Data {
     var admin = false
     var chapterTops: List<String>? = null

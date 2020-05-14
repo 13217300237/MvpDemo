@@ -1,9 +1,11 @@
 package com.zhou.mvpdemo.v
 
+import android.util.Log
 import android.view.View
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.LoginContract
+import com.zhou.mvpdemo.m.bean.user.UserBean
 import com.zhou.mvpdemo.p.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -41,8 +43,9 @@ class LoginActivity : BaseActivity<LoginContract.Presenter>(), LoginContract.Vie
         return tvUsername.text.isNotEmpty() && tvPassword.text.isNotEmpty()
     }
 
-    override fun handleLoginResult(result: String?) {
-        dataView.text = result
+    override fun handleLoginResult(result: UserBean?) {
+        Log.d("handleLoginResult", result.toString())
+        dataView.text = result.toString()
     }
 
     override fun showLoading() {

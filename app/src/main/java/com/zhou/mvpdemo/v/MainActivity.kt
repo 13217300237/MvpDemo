@@ -1,6 +1,8 @@
 package com.zhou.mvpdemo.v
 
 import android.content.Intent
+import android.os.Build
+import android.util.Log
 import android.view.View
 import com.zhou.mvpdemo.p.MainPagePresenter
 import com.zhou.baselibrary.v.BaseActivity
@@ -24,6 +26,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
     }
 
     override fun bindPresenter() {
+        Log.d("bindPresenter", Build.MODEL)
         mPresenter = MainPagePresenter(this)
     }
 

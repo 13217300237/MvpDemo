@@ -5,7 +5,7 @@ import android.view.View
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.RegisterContract
-import com.zhou.mvpdemo.m.bean.register.RegisterBean
+import com.zhou.mvpdemo.m.bean.user.UserBean
 import com.zhou.mvpdemo.p.RegisterPresenter
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -39,7 +39,7 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     /**
      * 处理注册结果
      */
-    override fun handlerRegisterResult(data: RegisterBean?) {
+    override fun handlerRegisterResult(data: UserBean?) {
         dataView.text = data.toString()
         Log.d("handlerRegisterResult", "$data")
     }

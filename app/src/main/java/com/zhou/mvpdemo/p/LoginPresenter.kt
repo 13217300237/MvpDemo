@@ -3,6 +3,7 @@ package com.zhou.mvpdemo.p
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.LoginContract
 import com.zhou.mvpdemo.m.LoginModel
+import com.zhou.mvpdemo.m.bean.user.UserBean
 
 class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
 
@@ -16,8 +17,8 @@ class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
         val m = model ?: return
 
         v.showLoading()
-        m.doLogin(username, password, object : HttpCallback<String> {
-            override fun onSuccess(result: String?) {
+        m.doLogin(username, password, object : HttpCallback<UserBean> {
+            override fun onSuccess(result: UserBean?) {
                 v.hideLoading()
                 v.handleLoginResult(result)
             }
