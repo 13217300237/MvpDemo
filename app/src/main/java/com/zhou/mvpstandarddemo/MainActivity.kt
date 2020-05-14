@@ -1,30 +1,31 @@
 package com.zhou.mvpstandarddemo
 
-import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.zhou.mvpstandarddemo.p.MainPagePresenter
+import com.zhou.mvpstandarddemo.v.base.BaseActivity
 import com.zhou.mvpstandarddemo.v.base.BaseView
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * View层一个标准实现
  */
-class MainActivity : AppCompatActivity(), BaseView {
+class MainActivity : BaseActivity<MainPagePresenter>(), BaseView {
 
-    private val newsPresenter = MainPagePresenter(this)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        init()
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
     }
 
-    private fun init() {
-        lifecycle.addObserver(newsPresenter) // 利用 lifecycle 防止内存泄漏
+    override fun bindPresenter() {
+        mPresenter = MainPagePresenter(this)
+    }
+
+    override fun castPresenter(): MainPagePresenter {
+        return mPresenter as MainPagePresenter
+    }
+
+    override fun init() {
         btn1.setOnClickListener {
-            val data = newsPresenter.getArticle()
+            val data = castPresenter().getArticle()
             if (data != null) {
                 dataView.text = data.toString()
             } else {
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity(), BaseView {
         }
 
         btn2.setOnClickListener {
-            val data = newsPresenter.getBanner()
+            val data = castPresenter().getBanner()
             if (data != null) {
                 dataView.text = data.toString()
             } else {
@@ -58,4 +59,6 @@ class MainActivity : AppCompatActivity(), BaseView {
         //  据说可以根据泛型对象来判断真实类型？
         dataView.text = t.toString()
     }
+
+
 }
