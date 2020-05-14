@@ -3,22 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".v.MainActivity">
+    tools:context="com.zhou.mvpdemo.v.RegisterActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/tvUsername"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="这里是主面板界面"
-        android:textSize="22sp" />
+        android:hint="请输入用户名"
+        android:lines="1" />
+
+    <EditText
+        android:id="@+id/tvPassword"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:lines="1" />
+
+    <EditText
+        android:id="@+id/tvRepassword"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="请再次输入密码"
+        android:inputType="textPassword"
+        android:lines="1" />
 
     <Button
-        android:id="@+id/btnToSetting"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegister"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="点击跳转到设置Activity"
-        android:textSize="22sp" />
+        android:text="注册" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -26,19 +43,6 @@
         android:layout_height="wrap_content"
         android:visibility="invisible"
         tools:visibility="visible" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="获取新闻数据" />
-
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="获取轮播图数据" />
-
 
     <TextView
         android:id="@+id/dataView"

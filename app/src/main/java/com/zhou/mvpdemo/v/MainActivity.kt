@@ -1,16 +1,21 @@
 package com.zhou.mvpdemo.v
 
+import android.content.Intent
 import android.view.View
 import com.zhou.mvpdemo.p.MainPagePresenter
 import com.zhou.baselibrary.v.BaseActivity
-import com.zhou.baselibrary.v.BaseView
 import com.zhou.mvpdemo.R
+import com.zhou.mvpdemo.contract.MainContract
+import com.zhou.mvpdemo.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.m.bean.banner.BannerBean
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * View层一个标准实现
+ *
+ * MainActivity: 一个app的主面板
  */
-class MainActivity : BaseActivity<MainPagePresenter>() {
+class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -30,7 +35,7 @@ class MainActivity : BaseActivity<MainPagePresenter>() {
             if (data != null) {
                 dataView.text = data.toString()
             } else {
-                onError()
+                onError("文章list请求失败")
             }
         }
 
@@ -39,9 +44,22 @@ class MainActivity : BaseActivity<MainPagePresenter>() {
             if (data != null) {
                 dataView.text = data.toString()
             } else {
-                onError()
+                onError("banner图请求失败")
             }
         }
+
+        btnToSetting.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun handlerArticles(bean: ArticleBean?) {
+        dataView.text = bean.toString() //  我只能 打印他的toString, 但是如果我想
+    }
+
+    override fun handlerBanners(bean: BannerBean?) {
+        dataView.text = bean.toString() //  我只能 打印他的toString, 但是如果我想
     }
 
     override fun showLoading() {
@@ -52,17 +70,8 @@ class MainActivity : BaseActivity<MainPagePresenter>() {
         progressBar.visibility = View.INVISIBLE
     }
 
-    override fun onError() {
+    override fun onError(msg: String) {
         dataView.text = "获取内容失败!"
     }
-
-    /**
-     * 我拿不到具体的类型，应该就不能对它进行处理
-     */
-    override fun <T> onSuccess(t: T) {
-        //  据说可以根据泛型对象来判断真实类型？
-        dataView.text = t.toString() //  我只能 打印他的toString, 但是如果我想
-    }
-
 
 }
