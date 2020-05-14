@@ -1,10 +1,10 @@
-package com.zhou.mvpstandarddemo.m
+package com.zhou.mvpdemo.m
 
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.baselibrary.network.Https
 import com.zhou.baselibrary.m.BaseModel
-import com.zhou.mvpstandarddemo.m.bean.articles.ArticleBean
-import com.zhou.mvpstandarddemo.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.m.bean.banner.BannerBean
 import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException

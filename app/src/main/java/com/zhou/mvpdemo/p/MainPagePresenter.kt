@@ -1,10 +1,10 @@
-package com.zhou.mvpstandarddemo.p
+package com.zhou.mvpdemo.p
 
 import android.util.Log
 import com.zhou.baselibrary.network.HttpCallback
-import com.zhou.mvpstandarddemo.m.WanandroidModel
-import com.zhou.mvpstandarddemo.m.bean.articles.ArticleBean
-import com.zhou.mvpstandarddemo.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.m.WanandroidModel
+import com.zhou.mvpdemo.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.m.bean.banner.BannerBean
 import com.zhou.baselibrary.p.BasePresenter
 import com.zhou.baselibrary.v.BaseView
 import java.lang.Exception

@@ -1,4 +1,4 @@
-package com.zhou.mvpstandarddemo.m.bean.articles
+package com.zhou.mvpdemo.m.bean.articles
 
 /**
  * 新闻数据的json解析bean

@@ -1,10 +1,10 @@
-package com.zhou.mvpstandarddemo.v
+package com.zhou.mvpdemo.v
 
 import android.view.View
-import com.zhou.mvpstandarddemo.p.MainPagePresenter
+import com.zhou.mvpdemo.p.MainPagePresenter
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.baselibrary.v.BaseView
-import com.zhou.mvpstandarddemo.R
+import com.zhou.mvpdemo.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**

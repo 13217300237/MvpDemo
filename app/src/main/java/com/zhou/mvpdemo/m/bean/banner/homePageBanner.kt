@@ -1,4 +1,4 @@
-package com.zhou.mvpstandarddemo.m.bean.banner
+package com.zhou.mvpdemo.m.bean.banner
 
 class BannerBean {
     var data: List<Data>? = null
