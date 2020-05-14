@@ -8,7 +8,7 @@ import com.zhou.baselibrary.p.BasePresenter
  * Activity 基 类
  * 使用该类创建实体Activity类，必须在泛型中先指定它的 P类
  */
-abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity(), BaseView {
+abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
     /**
      * 布局ID
      */

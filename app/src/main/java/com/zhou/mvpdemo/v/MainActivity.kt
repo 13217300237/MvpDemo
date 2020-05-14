@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * View层一个标准实现
  *
+ * 继承BaseActivity，用泛型参数来指定P类，再实现一个接口来约束自身行为
+ *
  * MainActivity: 一个app的主面板
  */
 class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
@@ -25,8 +27,8 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         mPresenter = MainPagePresenter(this)
     }
 
-    override fun castPresenter(): MainPagePresenter {
-        return mPresenter as MainPagePresenter
+    override fun castPresenter(): MainContract.Presenter {
+        return mPresenter as MainContract.Presenter
     }
 
     override fun init() {

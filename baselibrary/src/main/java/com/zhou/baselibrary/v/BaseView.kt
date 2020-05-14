@@ -18,7 +18,6 @@ interface BaseView {
     /**
      * 当数据加载失败时
      */
-    fun onError()
+    fun onError(msg: String)
 
-    fun <T> onSuccess(t: T)
 }
