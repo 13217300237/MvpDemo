@@ -19,9 +19,12 @@ class MainPagePresenter(view: BaseView) :
     private var model: WanandroidModel? = null
     private var view: BaseView? = view
 
+
     fun getArticle() {
-        val v = view ?: return //  过滤view为空的情况
+        // 小技巧，要想少写 判空的问号，感叹号，可以在函数开头，把变量接收下来，然后直接判空return，后面的代码就可以一致认为 接收后的对象非空
+        val v = view ?: return
         val m = model ?: return
+
         v.showLoading()
         m.getHomePageNews(object : HttpCallback<ArticleBean> {
             override fun onSuccess(result: ArticleBean?) {

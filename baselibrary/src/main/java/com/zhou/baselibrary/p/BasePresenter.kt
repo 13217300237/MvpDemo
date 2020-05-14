@@ -9,6 +9,8 @@ import com.zhou.baselibrary.v.BaseView
  * P 标准接口, 定义所有P的标准动作
  *
  * 如果不使用 lifecycle，这些释放动作就要放到所有Activity/Fragment的中，或者它们的基类中去做，现在统一在P层处理
+ *
+ *
  */
 interface BasePresenter<V : BaseView> : LifecycleObserver {
 

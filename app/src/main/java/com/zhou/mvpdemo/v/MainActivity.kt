@@ -10,8 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 /**
  * View层一个标准实现
  */
-class MainActivity : BaseActivity<MainPagePresenter>(),
-    BaseView {
+class MainActivity : BaseActivity<MainPagePresenter>() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
@@ -62,7 +61,7 @@ class MainActivity : BaseActivity<MainPagePresenter>(),
      */
     override fun <T> onSuccess(t: T) {
         //  据说可以根据泛型对象来判断真实类型？
-        dataView.text = t.toString()
+        dataView.text = t.toString() //  我只能 打印他的toString, 但是如果我想
     }
 
 
