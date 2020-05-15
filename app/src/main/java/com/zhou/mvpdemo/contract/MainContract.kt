@@ -4,8 +4,10 @@ import com.zhou.baselibrary.m.BaseModel
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.baselibrary.p.BasePresenter
 import com.zhou.baselibrary.v.BaseView
-import com.zhou.mvpdemo.m.bean.articles.ArticleBean
-import com.zhou.mvpdemo.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.contract.m.MainModel
+import com.zhou.mvpdemo.contract.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.contract.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.contract.p.MainPresenter
 
 /**
  * 用来约束MVP 三层架构的管理类
@@ -19,7 +21,7 @@ import com.zhou.mvpdemo.m.bean.banner.BannerBean
  * 项目后期查看代码非常凌乱
  *
  */
-interface MainContract {
+class MainContract {
 
     //M
     interface Model : BaseModel {
@@ -37,5 +39,16 @@ interface MainContract {
     interface Presenter : BasePresenter<BaseView> {
         fun getArticle()
         fun getBanner()
+    }
+
+    // 这里是不是可以提供静态方法，得到具体的P和M对象
+    companion object {
+        fun getPresenter(view: View): Presenter {
+            return MainPresenter(view)
+        }
+
+        fun getModel(): Model {
+            return MainModel()
+        }
     }
 }

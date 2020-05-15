@@ -1,9 +1,8 @@
-package com.zhou.mvpdemo.p
+package com.zhou.mvpdemo.contract.p
 
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.LoginContract
-import com.zhou.mvpdemo.m.LoginModel
-import com.zhou.mvpdemo.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.m.bean.user.UserBean
 
 class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
 
@@ -32,7 +31,7 @@ class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
     }
 
     override fun onCreate() {
-        model = LoginModel()
+        model = LoginContract.getModel()
     }
 
     override fun onDestroy() {

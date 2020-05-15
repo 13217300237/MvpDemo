@@ -5,8 +5,8 @@ import android.view.View
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.RegisterContract
-import com.zhou.mvpdemo.m.bean.user.UserBean
-import com.zhou.mvpdemo.p.RegisterPresenter
+import com.zhou.mvpdemo.contract.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.p.RegisterPresenter
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterContract.View {
@@ -23,6 +23,8 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
                 val password = tvPassword.text.trim().toString()
                 val repassword = tvRepassword.text.trim().toString()
                 castPresenter().doRegister(username = username, pwd = password, rpwd = repassword)
+            } else {
+                onError("有参数为空...")
             }
         }
 
@@ -33,7 +35,7 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     }
 
     override fun bindPresenter() {
-        mPresenter = RegisterPresenter(this)
+        mPresenter = RegisterContract.getPresenter(this)
     }
 
     /**

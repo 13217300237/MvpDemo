@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.View
-import com.zhou.mvpdemo.p.MainPagePresenter
+import com.zhou.mvpdemo.contract.p.MainPresenter
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.MainContract
-import com.zhou.mvpdemo.m.bean.articles.ArticleBean
-import com.zhou.mvpdemo.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.contract.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.contract.m.bean.banner.BannerBean
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -27,7 +27,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun bindPresenter() {
         Log.d("bindPresenter", Build.MODEL)
-        mPresenter = MainPagePresenter(this)
+        mPresenter = MainPresenter(this)
     }
 
     override fun castPresenter(): MainContract.Presenter {

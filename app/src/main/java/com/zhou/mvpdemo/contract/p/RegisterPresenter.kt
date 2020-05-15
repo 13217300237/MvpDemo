@@ -1,9 +1,9 @@
-package com.zhou.mvpdemo.p
+package com.zhou.mvpdemo.contract.p
 
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.RegisterContract
-import com.zhou.mvpdemo.m.RegisterModel
-import com.zhou.mvpdemo.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.m.RegisterModel
+import com.zhou.mvpdemo.contract.m.bean.user.UserBean
 
 class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presenter {
 
@@ -35,7 +35,7 @@ class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presente
     }
 
     override fun onCreate() {
-        model = RegisterModel()
+        model = RegisterContract.getModel()
     }
 
     override fun onDestroy() {

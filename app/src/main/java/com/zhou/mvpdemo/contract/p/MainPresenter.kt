@@ -1,16 +1,16 @@
-package com.zhou.mvpdemo.p
+package com.zhou.mvpdemo.contract.p
 
 import android.util.Log
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.MainContract
-import com.zhou.mvpdemo.m.MainModel
-import com.zhou.mvpdemo.m.bean.articles.ArticleBean
-import com.zhou.mvpdemo.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.contract.m.MainModel
+import com.zhou.mvpdemo.contract.m.bean.articles.ArticleBean
+import com.zhou.mvpdemo.contract.m.bean.banner.BannerBean
 
 /**
  * 主面板上所有下分模块所共有的一些业务逻辑, 那它可能就不止需要一个Model了
  */
-class MainPagePresenter(view: MainContract.View) : MainContract.Presenter {
+class MainPresenter(view: MainContract.View) : MainContract.Presenter {
 
     // 为什么我要把 model 放在外面？一个业务类P，只会有一个model么？如果需要多个数据源呢？
     private var model: MainContract.Model? = null

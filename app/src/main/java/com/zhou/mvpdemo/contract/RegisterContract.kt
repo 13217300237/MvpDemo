@@ -4,12 +4,14 @@ import com.zhou.baselibrary.m.BaseModel
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.baselibrary.p.BasePresenter
 import com.zhou.baselibrary.v.BaseView
-import com.zhou.mvpdemo.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.m.RegisterModel
+import com.zhou.mvpdemo.contract.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.p.RegisterPresenter
 
 /**
  * 注册相关的MVP三层,都用接口约束起来
  */
-interface RegisterContract {
+class RegisterContract {
     //M
     interface Model : BaseModel {
         fun doRegister(
@@ -35,4 +37,15 @@ interface RegisterContract {
             rpwd: String
         )
     }
+
+    companion object {
+        fun getPresenter(view: View): Presenter {
+            return RegisterPresenter(view)
+        }
+
+        fun getModel(): Model {
+            return RegisterModel()
+        }
+    }
+
 }

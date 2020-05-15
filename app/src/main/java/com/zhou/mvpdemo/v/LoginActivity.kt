@@ -5,8 +5,8 @@ import android.view.View
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.LoginContract
-import com.zhou.mvpdemo.m.bean.user.UserBean
-import com.zhou.mvpdemo.p.LoginPresenter
+import com.zhou.mvpdemo.contract.m.bean.user.UserBean
+import com.zhou.mvpdemo.contract.p.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
 /**
@@ -31,12 +31,16 @@ class LoginActivity : BaseActivity<LoginContract.Presenter>(), LoginContract.Vie
         }
     }
 
+    /**
+     * 这个可以算是特约P类,其实我还可以针对通用P类在这里独立创建一个P对象。
+     */
     override fun castPresenter(): LoginContract.Presenter {
         return mPresenter as LoginContract.Presenter
     }
 
     override fun bindPresenter() {
-        mPresenter = LoginPresenter(this)
+        mPresenter = LoginContract.getPresenter(this)
+        // 这种情况，到底是属于谁持有了谁的引用,双方都是对方的成员属性。这么看来，应该是相互持有。
     }
 
     override fun checkParams(): Boolean {

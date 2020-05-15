@@ -1,4 +1,4 @@
-package com.zhou.mvpdemo.m.bean.user
+package com.zhou.mvpdemo.contract.m.bean.user
 
 
 /**
