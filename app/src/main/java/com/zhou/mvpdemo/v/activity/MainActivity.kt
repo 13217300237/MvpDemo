@@ -1,15 +1,17 @@
-package com.zhou.mvpdemo.v
+package com.zhou.mvpdemo.v.activity
 
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.zhou.mvpdemo.contract.p.MainPresenter
 import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.MainContract
 import com.zhou.mvpdemo.contract.m.bean.articles.ArticleBean
 import com.zhou.mvpdemo.contract.m.bean.banner.BannerBean
+import com.zhou.mvpdemo.v.fragment.NoticeTipsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -27,7 +29,7 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun bindPresenter() {
         Log.d("bindPresenter", Build.MODEL)
-        mPresenter = MainPresenter(this)
+        mPresenter = MainContract.getPresenter(this)
     }
 
     override fun castPresenter(): MainContract.Presenter {
@@ -36,21 +38,11 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun init() {
         btn1.setOnClickListener {
-            val data = castPresenter().getArticle()
-            if (data != null) {
-                dataView.text = data.toString()
-            } else {
-                onError("文章list请求失败")
-            }
+            castPresenter().getArticle()
         }
 
         btn2.setOnClickListener {
-            val data = castPresenter().getBanner()
-            if (data != null) {
-                dataView.text = data.toString()
-            } else {
-                onError("banner图请求失败")
-            }
+            castPresenter().getBanner()
         }
 
         btnToRegister.setOnClickListener {
@@ -62,6 +54,17 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        addFragment()
+    }
+
+    private lateinit var fragment: Fragment
+    private fun addFragment() {
+        fragment = NoticeTipsFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContent, fragment, NoticeTipsFragment::class.java.simpleName)
+            .show(fragment)
+            .commitAllowingStateLoss()
     }
 
     override fun handlerArticles(bean: ArticleBean?) {

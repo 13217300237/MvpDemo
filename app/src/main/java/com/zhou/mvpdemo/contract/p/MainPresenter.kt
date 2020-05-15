@@ -54,7 +54,7 @@ class MainPresenter(view: MainContract.View) : MainContract.Presenter {
     }
 
     override fun onCreate() {
-        model = MainModel()
+        model = MainContract.getModel()
         Log.d("MainPagePresenter", "onCreate 綁定资源")
     }
 

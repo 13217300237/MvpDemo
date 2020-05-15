@@ -1,4 +1,4 @@
-package com.zhou.mvpdemo.v
+package com.zhou.mvpdemo.v.activity
 
 import android.util.Log
 import android.view.View
@@ -6,7 +6,6 @@ import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.RegisterContract
 import com.zhou.mvpdemo.contract.m.bean.user.UserBean
-import com.zhou.mvpdemo.contract.p.RegisterPresenter
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterContract.View {
@@ -64,4 +63,6 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     override fun onError(msg: String) {
         dataView.text = msg
     }
+
+   
 }

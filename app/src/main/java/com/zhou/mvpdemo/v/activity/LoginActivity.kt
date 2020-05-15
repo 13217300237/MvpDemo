@@ -1,4 +1,4 @@
-package com.zhou.mvpdemo.v
+package com.zhou.mvpdemo.v.activity
 
 import android.util.Log
 import android.view.View
@@ -6,11 +6,14 @@ import com.zhou.baselibrary.v.BaseActivity
 import com.zhou.mvpdemo.R
 import com.zhou.mvpdemo.contract.LoginContract
 import com.zhou.mvpdemo.contract.m.bean.user.UserBean
-import com.zhou.mvpdemo.contract.p.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
 /**
- * 完成V类，主要写的是调用P类的代码，以及自身的UI交互
+ * 完成V类，主要写的是调用P类的代码，以及自身的UI交互,
+ * 不要去写任何的具体的业务流程，比如，登录过程中，从界面上拿到用户名和密码，然后传给P的login方法即可，其他的一概不要做。
+ * 不要在这里写登录之后的回调。
+ *
+ *
  */
 class LoginActivity : BaseActivity<LoginContract.Presenter>(), LoginContract.View {
 
