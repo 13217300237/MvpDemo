@@ -55,6 +55,11 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
             startActivity(intent)
         }
 
+        btnToLogin2.setOnClickListener {
+            val intent = Intent(this, LoginActivity2::class.java)
+            startActivity(intent)
+        }
+
         addFragment()
     }
 

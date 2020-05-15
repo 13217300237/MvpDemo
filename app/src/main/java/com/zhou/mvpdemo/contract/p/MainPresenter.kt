@@ -13,8 +13,8 @@ import com.zhou.mvpdemo.contract.m.bean.banner.BannerBean
 class MainPresenter(view: MainContract.View) : MainContract.Presenter {
 
     // 为什么我要把 model 放在外面？一个业务类P，只会有一个model么？如果需要多个数据源呢？
-    private var model: MainContract.Model? = null
-    private var view: MainContract.View? = view
+    var model: MainContract.Model? = null
+    var view: MainContract.View? = view
 
     override fun getArticle() {
         // 小技巧，要想少写 判空的问号，感叹号，可以在函数开头，把变量接收下来，然后直接判空return，后面的代码就可以一致认为 接收后的对象非空

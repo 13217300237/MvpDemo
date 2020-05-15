@@ -11,22 +11,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="这里是主面板界面"
-        android:textSize="22sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="点击跳转到注册Activity"
-        android:textSize="22sp" />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="点击跳转到登录Activity"
-        android:textSize="22sp" />
+        android:textSize="18sp" />
 
+    <Button
+        android:id="@+id/btnToLogin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击跳转到登录Activity2,兼容SSSVIP"
+        android:textSize="18sp" />
 
     <ProgressBar
         android:id="@+id/progressBar"

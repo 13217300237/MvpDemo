@@ -17,6 +17,32 @@ import java.io.IOException
 class HttpRequestManager {
 
     companion object {
+        fun doLogin2(
+            username: String,
+            password: String,
+            userType: String,
+            httpCallback: HttpCallback<UserBean>
+        ) {
+            val url = "https://www.wanandroid.com/user/login"
+            Https(url)
+                .addParam("username", username)
+                .addParam("password", password)
+                .post(object : Https.ResponseCallback<UserBean?> {
+                    override fun onSuccess(
+                        request: Request?,
+                        response: Response?,
+                        result: UserBean?,
+                        code: Int
+                    ) {
+                        httpCallback.onSuccess(result)
+                    }
+
+                    override fun onFailure(request: Request?, e: IOException?) {
+                        httpCallback.onFailure(e)
+                    }
+                })
+        }
+
         fun doLogin(username: String, password: String, httpCallback: HttpCallback<UserBean>) {
             val url = "https://www.wanandroid.com/user/login"
             Https(url)

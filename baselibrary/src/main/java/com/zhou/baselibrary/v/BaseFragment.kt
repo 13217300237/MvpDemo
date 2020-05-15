@@ -1,14 +1,13 @@
 package com.zhou.baselibrary.v
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.zhou.baselibrary.p.BasePresenter
 
-/**
- * Activity 基 类
- * 使用该类创建实体Activity类，必须在泛型中先指定它的 P类
- */
-abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
+abstract class BaseFragment<T : BasePresenter<BaseView>> : Fragment() {
     /**
      * 布局ID
      */
@@ -17,7 +16,7 @@ abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
     /**
      * 界面元素初始化
      */
-    abstract fun init()
+    abstract fun init(view: View)
 
     /**
      * 业务处理类P
@@ -34,11 +33,15 @@ abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
      */
     abstract fun bindPresenter()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val root = inflater.inflate(getLayoutId(), container, false)
         bindPresenter()
-        init()
         lifecycle.addObserver(mPresenter) // 利用 lifecycle 防止内存泄漏
+        init(root)
+        return root
     }
 }

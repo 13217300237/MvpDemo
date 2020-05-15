@@ -8,8 +8,8 @@ import com.zhou.mvpdemo.contract.m.bean.user.UserBean
 class RegisterPresenter(view: RegisterContract.View) : RegisterContract.Presenter {
 
     // 为什么我要把 model 放在外面？一个业务类P，只会有一个model么？如果需要多个数据源呢？
-    private var model: RegisterContract.Model? = null
-    private var view: RegisterContract.View? = view
+    var model: RegisterContract.Model? = null
+    var view: RegisterContract.View? = view
 
     override fun doRegister(
         username: String,
