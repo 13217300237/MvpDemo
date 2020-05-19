@@ -13,7 +13,9 @@ class NoticeTipsFragment : BaseFragment<NoticeTipsContract.Presenter>(), NoticeT
     }
 
     override fun init() {
-        getPresenter().updateMsg()
+        tvMsg.setOnClickListener {
+            getPresenter().updateMsg()
+        }
     }
 
     override fun updateMsg(msg: String) {

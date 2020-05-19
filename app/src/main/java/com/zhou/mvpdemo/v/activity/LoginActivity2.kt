@@ -23,7 +23,13 @@ class LoginActivity2 : LoginActivity(), LoginContract2.View {
 
     override fun init() {
         super.init()
-        btnLogin2.setOnClickListener { getPresenter().doLogin2(getUserName(), getPassword(), getUserType()) }
+        btnLogin2.setOnClickListener {
+            getPresenter().doLogin2(
+                getUserName(),
+                getPassword(),
+                getUserType()
+            )
+        }
     }
 
     override fun getUserType(): String {
@@ -39,17 +45,9 @@ class LoginActivity2 : LoginActivity(), LoginContract2.View {
         dataView.text = "尊贵的${getUserType()} \n$msg"
     }
 
-    /**
-     * 如果存在Activity继承关系，需要重写getPresenter方法，并变更返回值为当前实际类型,
-     * 并把
-     */
     override fun getPresenter(): LoginContract2.Presenter {
         return super.getPresenter() as LoginContract2.Presenter
     }
-
-    /**
-     * 如果存在继承关系，需要重写setPresenter方法，并变更返回值为当前实际类型
-     */
     override fun setPresenter(): LoginContract2.Presenter {
         return LoginContract2.getPresenter(this)
     }

@@ -26,15 +26,20 @@ abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
 
     /**
      * 设置P实例
+     *
+     * 如果存在继承关系，需要重写setPresenter方法，并变更返回值为当前实际类型
      */
     abstract fun setPresenter(): T
 
     /**
      * 綁定业务处理类对象
+     * 如果存在Activity继承关系，需要重写getPresenter方法，并变更返回值为当前实际类型,
+     * 并把p转化成指定类型
      */
     open fun getPresenter(): T {
         return mPresenter as T
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

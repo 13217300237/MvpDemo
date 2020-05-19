@@ -60,7 +60,6 @@
         android:background="@color/colorPrimary"
         android:minHeight="50dp" />
 
-
     <TextView
         android:id="@+id/dataView"
         android:layout_width="match_parent"
