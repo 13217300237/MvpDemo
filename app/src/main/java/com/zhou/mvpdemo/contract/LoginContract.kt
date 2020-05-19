@@ -21,7 +21,8 @@ class LoginContract {
      * 定义View层的界面处理
      */
     interface View : BaseView {
-        fun checkParams(): Boolean
+        fun getUserName():String
+        fun getPassword():String
         fun handleLoginResult(result: UserBean?)
     }
 
@@ -29,7 +30,8 @@ class LoginContract {
      * 定义P层的业务逻辑调用
      */
     interface Presenter : BasePresenter<BaseView> {
-        fun doLogin(username: String, password: String)
+        fun checkParams(): Boolean
+        fun doLogin()
     }
 
     // 这里是不是可以提供静态方法，得到具体的P和M对象

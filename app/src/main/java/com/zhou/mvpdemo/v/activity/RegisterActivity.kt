@@ -15,26 +15,9 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
     }
 
     override fun init() {
-
         btnRegister.setOnClickListener {
-            if (checkParams()) {
-                val username = tvUsername.text.trim().toString()
-                val password = tvPassword.text.trim().toString()
-                val repassword = tvRepassword.text.trim().toString()
-                castPresenter().doRegister(username = username, pwd = password, rpwd = repassword)
-            } else {
-                onError("有参数为空...")
-            }
+            getPresenter().doRegister()
         }
-
-    }
-
-    override fun castPresenter(): RegisterContract.Presenter {
-        return mPresenter as RegisterContract.Presenter
-    }
-
-    override fun bindPresenter() {
-        mPresenter = RegisterContract.getPresenter(this)
     }
 
     /**
@@ -42,14 +25,18 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
      */
     override fun handlerRegisterResult(data: UserBean?) {
         dataView.text = data.toString()
-        Log.d("handlerRegisterResult", "$data")
     }
 
-    /**
-     * 校验参数
-     */
-    override fun checkParams(): Boolean {
-        return tvUsername.text.isNotEmpty() && tvPassword.text.isNotEmpty() && tvRepassword.text.isNotEmpty()
+    override fun getUsername(): String {
+        return tvUsername.text.trim().toString()
+    }
+
+    override fun getPassword(): String {
+        return tvPassword.text.trim().toString()
+    }
+
+    override fun getRePassword(): String {
+        return tvRepassword.text.trim().toString()
     }
 
     override fun showLoading() {
@@ -64,5 +51,9 @@ class RegisterActivity : BaseActivity<RegisterContract.Presenter>(), RegisterCon
         dataView.text = msg
     }
 
-   
+    override fun setPresenter(): RegisterContract.Presenter {
+        return RegisterContract.getPresenter(this)
+    }
+
+
 }

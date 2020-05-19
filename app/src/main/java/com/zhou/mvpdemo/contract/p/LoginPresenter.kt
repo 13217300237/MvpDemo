@@ -3,6 +3,7 @@ package com.zhou.mvpdemo.contract.p
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.LoginContract
 import com.zhou.mvpdemo.contract.m.bean.user.UserBean
+import kotlinx.android.synthetic.main.activity_login.*
 
 open class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
 
@@ -11,12 +12,23 @@ open class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
     var model: LoginContract.Model? = null
     var view: LoginContract.View? = view
 
-    override fun doLogin(username: String, password: String) {
+
+    override fun checkParams(): Boolean {
+        val v = view ?: return false
+        return v.getUserName().isNotBlank() && v.getPassword().isNotBlank()
+    }
+
+    override fun doLogin() {
         val v = view ?: return
         val m = model ?: return
 
+        if (!checkParams()) {
+            v.onError("有参数为空...")
+            return
+        }
+
         v.showLoading()
-        m.doLogin(username, password, object : HttpCallback<UserBean> {
+        m.doLogin(v.getUserName(), v.getPassword(), object : HttpCallback<UserBean> {
             override fun onSuccess(result: UserBean?) {
                 v.hideLoading()
                 v.handleLoginResult(result)

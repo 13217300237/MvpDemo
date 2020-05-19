@@ -16,22 +16,18 @@ abstract class BaseFragment<T : BasePresenter<BaseView>> : Fragment() {
     /**
      * 界面元素初始化
      */
-    abstract fun init(view: View)
+    abstract fun init()
 
     /**
      * 业务处理类P
      */
-    lateinit var mPresenter: BasePresenter<BaseView>
+    private lateinit var mPresenter: BasePresenter<BaseView>
 
-    /**
-     * P类对象强转, 强转之后才可以在V层使用
-     */
-    abstract fun castPresenter(): T
+    abstract fun setPresenter(): T
 
-    /**
-     * 綁定业务处理类对象
-     */
-    abstract fun bindPresenter()
+    fun getPresenter(): T {
+        return mPresenter as T
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,9 +35,16 @@ abstract class BaseFragment<T : BasePresenter<BaseView>> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(getLayoutId(), container, false)
-        bindPresenter()
+        mPresenter = setPresenter()
         lifecycle.addObserver(mPresenter) // 利用 lifecycle 防止内存泄漏
-        init(root)
         return root
+    }
+
+    /**
+     * onViewCreated之后，才能用kotlin的viewId去操作view
+     */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
     }
 }

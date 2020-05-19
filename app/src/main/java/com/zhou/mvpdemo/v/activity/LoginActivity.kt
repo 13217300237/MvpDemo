@@ -37,36 +37,18 @@ open class LoginActivity : BaseActivity<LoginContract.Presenter>(), LoginContrac
     }
 
     override fun init() {
-        btnLogin.setOnClickListener {
-            if (checkParams()) {
-                val username = tvUsername.text.trim().toString()
-                val password = tvPassword.text.trim().toString()
-                castPresenter().doLogin(username, password)
-            } else {
-                onError("有参数为空..")
-            }
-
-        }
+        btnLogin.setOnClickListener { getPresenter().doLogin() }
     }
 
-    /**
-     * 这个可以算是特约P类,其实我还可以针对通用P类在这里独立创建一个P对象。
-     */
-    override fun castPresenter(): LoginContract.Presenter {
-        return mPresenter as LoginContract.Presenter
+    override fun getUserName(): String {
+        return tvUsername.text.trim().toString()
     }
 
-    override fun bindPresenter() {
-        mPresenter = LoginContract.getPresenter(this)
-        // 这种情况，到底是属于谁持有了谁的引用,双方都是对方的成员属性。这么看来，应该是相互持有。
-    }
-
-    override fun checkParams(): Boolean {
-        return tvUsername.text.isNotEmpty() && tvPassword.text.isNotEmpty()
+    override fun getPassword(): String {
+        return tvPassword.text.trim().toString()
     }
 
     override fun handleLoginResult(result: UserBean?) {
-        Log.d("handleLoginResult", result.toString())
         dataView.text = result.toString()
     }
 
@@ -81,4 +63,10 @@ open class LoginActivity : BaseActivity<LoginContract.Presenter>(), LoginContrac
     override fun onError(msg: String) {
         dataView.text = msg
     }
+
+    override fun setPresenter(): LoginContract.Presenter {
+        return LoginContract.getPresenter(this)
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.zhou.mvpdemo.v.activity
 
 import android.util.Log
 import com.zhou.mvpdemo.R
+import com.zhou.mvpdemo.contract.LoginContract
 import com.zhou.mvpdemo.contract.LoginContract2
 import com.zhou.mvpdemo.contract.m.bean.user.UserBean
 import kotlinx.android.synthetic.main.activity_login2.*
@@ -22,33 +23,15 @@ class LoginActivity2 : LoginActivity(), LoginContract2.View {
 
     override fun init() {
         super.init()
-        // 普通身份登录
-        btnLogin2.setOnClickListener {
-            if (checkParams()) {
-                val username = tvUsername.text.trim().toString()
-                val password = tvPassword.text.trim().toString()
-                castPresenter().doLogin2(username, password, getUserType())
-            } else {
-                onErrorForSSSVIP("有参数为空..")
-            }
-        }
-    }
-
-    override fun castPresenter(): LoginContract2.Presenter {
-        return mPresenter as LoginContract2.Presenter
-    }
-
-    override fun bindPresenter() {
-        mPresenter = LoginContract2.getPresenter(this)
+        btnLogin2.setOnClickListener { getPresenter().doLogin2(getUserName(), getPassword(), getUserType()) }
     }
 
     override fun getUserType(): String {
         return "SSSSVIP"
     }
 
+    // 为SSSVIP专门准备的登录结果处理
     override fun handleLoginResultForSSSVIP(result: UserBean?) {
-        // 为SSSVIP专门准备的登录结果处理
-        Log.d("handleLoginResult", result.toString())
         dataView.text = "尊贵的 ${getUserType()} \n${result.toString()}"
     }
 
@@ -56,4 +39,18 @@ class LoginActivity2 : LoginActivity(), LoginContract2.View {
         dataView.text = "尊贵的${getUserType()} \n$msg"
     }
 
+    /**
+     * 如果存在Activity继承关系，需要重写getPresenter方法，并变更返回值为当前实际类型,
+     * 并把
+     */
+    override fun getPresenter(): LoginContract2.Presenter {
+        return super.getPresenter() as LoginContract2.Presenter
+    }
+
+    /**
+     * 如果存在继承关系，需要重写setPresenter方法，并变更返回值为当前实际类型
+     */
+    override fun setPresenter(): LoginContract2.Presenter {
+        return LoginContract2.getPresenter(this)
+    }
 }

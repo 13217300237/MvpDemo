@@ -16,6 +16,12 @@ class LoginPresenter2(view: LoginContract2.View) : LoginPresenter(view), LoginCo
     override fun doLogin2(username: String, password: String, userType: String) {
         val m = model as LoginContract2.Model // 类型转换成 Login2Activity专用的 Model
         val v = view as LoginContract2.View
+
+        if (!checkParams()) {
+            v.onErrorForSSSVIP("有参数为空...")
+            return
+        }
+        
         v.showLoading()
         m.doLogin2(username, password, userType, object : HttpCallback<UserBean> {
             override fun onSuccess(result: UserBean?) {
@@ -25,7 +31,7 @@ class LoginPresenter2(view: LoginContract2.View) : LoginPresenter(view), LoginCo
 
             override fun onFailure(e: Exception?) {
                 v.hideLoading()
-                v.onError(e.toString())
+                v.onErrorForSSSVIP(e.toString())
             }
         })
 

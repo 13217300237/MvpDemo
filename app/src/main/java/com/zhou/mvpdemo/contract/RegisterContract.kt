@@ -25,17 +25,15 @@ class RegisterContract {
     //V
     interface View : BaseView {
         fun handlerRegisterResult(data: UserBean?)
-
-        fun checkParams(): Boolean
+        fun getUsername(): String
+        fun getPassword(): String
+        fun getRePassword(): String
     }
 
     //P
     interface Presenter : BasePresenter<BaseView> {
-        fun doRegister(
-            username: String,
-            pwd: String,
-            rpwd: String
-        )
+        fun checkParams(): Boolean
+        fun doRegister()
     }
 
     companion object {

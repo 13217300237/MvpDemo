@@ -27,23 +27,10 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
         return R.layout.activity_main
     }
 
-    override fun bindPresenter() {
-        Log.d("bindPresenter", Build.MODEL)
-        mPresenter = MainContract.getPresenter(this)
-    }
-
-    override fun castPresenter(): MainContract.Presenter {
-        return mPresenter as MainContract.Presenter
-    }
-
     override fun init() {
-        btn1.setOnClickListener {
-            castPresenter().getArticle()
-        }
+        btn1.setOnClickListener { getPresenter().getArticle() }
 
-        btn2.setOnClickListener {
-            castPresenter().getBanner()
-        }
+        btn2.setOnClickListener { getPresenter().getBanner() }
 
         btnToRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -90,6 +77,10 @@ class MainActivity : BaseActivity<MainContract.Presenter>(), MainContract.View {
 
     override fun onError(msg: String) {
         dataView.text = msg
+    }
+
+    override fun setPresenter(): MainContract.Presenter {
+        return MainContract.getPresenter(this)
     }
 
 }

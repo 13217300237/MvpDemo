@@ -22,22 +22,24 @@ abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
     /**
      * 业务处理类P
      */
-    lateinit var mPresenter: BasePresenter<BaseView>
+    private lateinit var mPresenter: BasePresenter<BaseView>
 
     /**
-     * P类对象强转, 强转之后才可以在V层使用
+     * 设置P实例
      */
-    abstract fun castPresenter(): T
+    abstract fun setPresenter(): T
 
     /**
      * 綁定业务处理类对象
      */
-    abstract fun bindPresenter()
+    open fun getPresenter(): T {
+        return mPresenter as T
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-        bindPresenter()
+        mPresenter = setPresenter()
         init()
         lifecycle.addObserver(mPresenter) // 利用 lifecycle 防止内存泄漏
     }
