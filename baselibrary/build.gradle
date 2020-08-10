@@ -27,17 +27,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api 'com.squareup.okhttp3:okhttp:3.2.0'
-    api 'com.google.code.gson:gson:2.3.1'
+    api kt.kotlin
 
-    api 'com.alibaba:arouter-api:1.4.1'
+    api deps.androidx_appcompat
+    api deps.androidx_core
+    api deps.android_constraintlayout
+    api deps.recyclerview
+    api deps.okhttp
+    api deps.gson
+    api deps.arouter
 
-    api 'androidx.recyclerview:recyclerview:1.1.0'
+    testApi deps.junit
+    androidTestApi deps.android_test
+    androidTestApi deps.android_test_espresso
+
+
 }
