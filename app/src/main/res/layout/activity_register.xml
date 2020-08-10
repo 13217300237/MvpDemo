@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.zhou.mvpdemo.v.activity.RegisterActivity">
+    tools:context="com.enplus.mvpdemo.v.activity.RegisterActivity">
 
     <EditText
         android:id="@+id/tvUsername"

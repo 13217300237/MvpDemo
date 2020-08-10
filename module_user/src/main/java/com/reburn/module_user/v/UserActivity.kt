@@ -3,7 +3,7 @@ package com.reburn.module_user.v
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.reburn.module_user.R
 import com.reburn.module_user.UserContract
-import com.zhou.baselibrary.v.BaseActivity
+import com.enplus.mvp.v.BaseActivity
 import kotlinx.android.synthetic.main.user_activity.*
 
 /**

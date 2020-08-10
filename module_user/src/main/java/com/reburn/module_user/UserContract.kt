@@ -2,9 +2,9 @@ package com.reburn.module_user
 
 import com.reburn.module_user.m.UserModel
 import com.reburn.module_user.p.UserPresenter
-import com.zhou.baselibrary.m.BaseModel
-import com.zhou.baselibrary.p.BasePresenter
-import com.zhou.baselibrary.v.BaseView
+import com.enplus.mvp.m.BaseModel
+import com.enplus.mvp.p.BasePresenter
+import com.enplus.mvp.v.BaseView
 
 /**
  *    author : ZhouHang
