@@ -10,10 +10,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/baselibrary" />
-            <option value="$PROJECT_DIR$/module_app" />
-            <option value="$PROJECT_DIR$/module_businiess_mode" />
-            <option value="$PROJECT_DIR$/module_user" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/base/baselibrary" />
+            <option value="$PROJECT_DIR$/business" />
+            <option value="$PROJECT_DIR$/business/module_businiess_mode" />
+            <option value="$PROJECT_DIR$/business/module_user" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

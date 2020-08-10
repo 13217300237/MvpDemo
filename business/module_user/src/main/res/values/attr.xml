@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaskFilterConstraintLayout">
+        <attr name="mfColor" format="color" />
+        <attr name="mfCornerRadius" format="dimension" />
+        <attr name="mfRadioRadius" format="dimension" />
+        <attr name="mfShapeType" format="integer" />
+    </declare-styleable>
+</resources>
