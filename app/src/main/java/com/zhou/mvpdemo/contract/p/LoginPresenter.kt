@@ -3,7 +3,6 @@ package com.zhou.mvpdemo.contract.p
 import com.zhou.baselibrary.network.HttpCallback
 import com.zhou.mvpdemo.contract.LoginContract
 import com.zhou.mvpdemo.contract.m.bean.user.UserBean
-import kotlinx.android.synthetic.main.activity_login.*
 
 open class LoginPresenter(view: LoginContract.View) : LoginContract.Presenter {
 

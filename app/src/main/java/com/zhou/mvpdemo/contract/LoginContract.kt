@@ -34,7 +34,6 @@ class LoginContract {
         fun doLogin()
     }
 
-    // 这里是不是可以提供静态方法，得到具体的P和M对象
     companion object {
         fun getPresenter(view: View): Presenter {
             return LoginPresenter(view)
