@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.alibaba.android.arouter.launcher.ARouter
 import com.zhou.baselibrary.p.BasePresenter
 
 abstract class BaseFragment<T : BasePresenter<BaseView>> : Fragment() {
@@ -57,5 +58,6 @@ abstract class BaseFragment<T : BasePresenter<BaseView>> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        ARouter.getInstance().inject(this);
     }
 }

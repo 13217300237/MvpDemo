@@ -2,6 +2,7 @@ package com.zhou.baselibrary.v
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.alibaba.android.arouter.launcher.ARouter
 import com.zhou.baselibrary.p.BasePresenter
 
 /**
@@ -47,5 +48,6 @@ abstract class BaseActivity<T : BasePresenter<BaseView>> : AppCompatActivity() {
         mPresenter = setPresenter()
         init()
         lifecycle.addObserver(mPresenter) // 利用 lifecycle 防止内存泄漏
+        ARouter.getInstance().inject(this)
     }
 }
