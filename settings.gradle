@@ -1,2 +1,5 @@
 include ':app', ':baselibrary'
 rootProject.name='MvpStandardDemo'
+include ':modole_app'
+include ':module_user'
+include ':module_businiess_mode'
